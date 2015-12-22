@@ -24,7 +24,7 @@ namespace Plugins
         public override void TakeHit(Entity source, int damage = 1, DamageCause cause = DamageCause.Unknown)
         {
             
-            var player = source as Player;
+            var player = source as MiniPEPlayer;
             if (player != null)
             {
                 if(villager.NameTag.Equals("Jump"))

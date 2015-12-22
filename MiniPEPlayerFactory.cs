@@ -1,14 +1,24 @@
 ﻿using System.Net;
 
 using MiNET;
+using log4net;
 
 namespace Plugins
 {
-    public class PlayerFactory
+    public class MiniPEPlayerFactory : PlayerFactory
     {
-        public virtual Player CreatePlayer(MiNetServer server, IPEndPoint endPoint, int mtuSize)
+
+        private LobbyManager lm;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MiniPEPlayerFactory));
+
+        public MiniPEPlayerFactory(LobbyManager lm)
         {
-            return new MiniPEPlayer(server, endPoint, mtuSize);
+            this.lm = lm;
+        }
+
+        public override Player CreatePlayer(MiNetServer server, IPEndPoint endPoint, int mtuSize)
+        {
+            return new MiniPEPlayer(server, endPoint, mtuSize, lm);
         }
     }
 }

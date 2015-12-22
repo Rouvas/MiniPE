@@ -22,7 +22,7 @@ namespace Plugins
             Matches = new List<JumpMatch>();
         }
 
-        public void playerWantsToJoin(Player player)
+        public void playerWantsToJoin(MiniPEPlayer player)
         {
             if (!playsJump(player))
             {
@@ -81,7 +81,7 @@ namespace Plugins
         /*
         Checks if a player plays jump n run
         */
-        public Boolean playsJump(Player player)
+        public Boolean playsJump(MiniPEPlayer player)
         {
             foreach(JumpMatch match in Matches)
             {
@@ -96,7 +96,7 @@ namespace Plugins
         /*
         returns the match from a player
         */
-        public JumpMatch getMatchByPlayer(Player player)
+        public JumpMatch getMatchByPlayer(MiniPEPlayer player)
         {
             foreach(JumpMatch match in Matches)
             {

@@ -31,6 +31,8 @@ namespace Plugins
 
         protected override void OnEnable()
         {
+            // here is the part where I think I have to set the PlayerFactory
+            Context.Server.PlayerFactory = new MiniPEPlayerFactory(this);
             // load important levels
             lobbyLevel = Context.LevelManager.GetLevel(null, "Default");
             // stop block placing and breaking and stop the world time
@@ -106,7 +108,7 @@ namespace Plugins
         and then teleport back to the beginning
         */
         [PacketHandler, Receive]
-        public Package inWater(McpeMovePlayer message, Player player)
+        public Package inWater(McpeMovePlayer message, MiniPEPlayer player) // <- this is not called I think (maybe because of the Server creates no MiniPEPlayer Objects)
         {
             if (jumpManager.playsJump(player))
             {
@@ -128,7 +130,7 @@ namespace Plugins
         Check if a player in jump n run reached the finish
         */
         [PacketHandler, Receive]
-        public Package overRedstoneBlock(McpeMovePlayer message, Player player)
+        public Package overRedstoneBlock(McpeMovePlayer message, MiniPEPlayer player) // <- isn't working too
         {
             if(jumpManager.playsJump(player))
             {

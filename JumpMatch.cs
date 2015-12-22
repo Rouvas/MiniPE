@@ -16,7 +16,7 @@ namespace Plugins
 
         public int MAX_PLAYERS = 10;
 
-        public List<Player> Players;
+        public List<MiniPEPlayer> Players;
 
         public JumpManager manager;
 
@@ -24,9 +24,9 @@ namespace Plugins
         {
             manager = m;
             // create player list
-            Players = new List<Player>();
+            Players = new List<MiniPEPlayer>();
             // load the level for the jump n run
-            level = new Level("jump" + manager.getMatchCount(), new AnvilWorldProvider(level location is here));
+            level = new Level("jump" + manager.getMatchCount(), new AnvilWorldProvider(@"the path"));
             level.Initialize();
         }
 
@@ -35,7 +35,7 @@ namespace Plugins
             return Players.Count;
         }
 
-        public void addPlayer(Player player)
+        public void addPlayer(MiniPEPlayer player)
         {
             // add player to list
             Players.Add(player);
@@ -53,7 +53,7 @@ namespace Plugins
             });
         }
 
-        public void removePlayer(Player player)
+        public void removePlayer(MiniPEPlayer player)
         {
             // remove player from list
             Players.Remove(player);
@@ -69,7 +69,7 @@ namespace Plugins
             });
         }
 
-        public Boolean isInMatch(Player player)
+        public Boolean isInMatch(MiniPEPlayer player)
         {
             foreach (Player p in Players)
             {
